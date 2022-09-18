@@ -13,7 +13,7 @@ public class Program {
         final Card dealerCard = deck.cards.remove();
         dealerHand.addCard(dealerCard);
         dealerTotal = dealerHand.getTotal();
-        System.out.printf("Dealer drew with %s %s. Dealer has %s. Your turn%n", dealerCard.suit, dealerCard.getRankString(), dealerTotal);
+        System.out.printf("Dealer drew %s %s. Dealer has %s. Your turn%n", dealerCard.suit, dealerCard.getRankString(), dealerTotal);
         final Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Stand, Hit");
@@ -40,18 +40,19 @@ public class Program {
             if(playerTotal > 21) {
                 break;
             }
+            System.out.println("Dealer's turn");
             final Card card = deck.cards.remove();
             dealerHand.addCard(card);
             dealerTotal = dealerHand.getTotal();
             if(dealerTotal > 21) {
-                System.out.printf("Dealer drew with %s %s. Dealer has %s. The game is over%n", card.suit, card.getRankString(), dealerTotal);
+                System.out.printf("Dealer drew  %s %s. Dealer has %s. The game is over%n", card.suit, card.getRankString(), dealerTotal);
                 break;
             }
             if(dealerTotal == 21) {
-                System.out.printf("Hit with %s %s. Total is %s. Blackjack!%n", card.suit, card.getRankString(), dealerTotal);
+                System.out.printf("Dealer drew  %s %s. Dealer has %s. Blackjack!%n", card.suit, card.getRankString(), dealerTotal);
                 break;
             }
-            System.out.printf("Dealer drew with %s %s. Dealer has %s.%n", card.suit, card.getRankString(), dealerTotal);
+            System.out.printf("Dealer drew  %s %s. Dealer has %s.%n", card.suit, card.getRankString(), dealerTotal);
             if(dealerTotal > 16) {
                 System.out.println("Dealer stands, game is over");
                 break;
